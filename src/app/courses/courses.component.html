@@ -1,6 +1,5 @@
 <div fxLayout = "column" fxLayoutAlign="center center" style="" class="whole-page">
   
-  <div *ngIf="!isRequest">
 
     <h1 style="display:flex; justify-content: space-between;">Here you can download courses <button mat-raised-button color="accent" style="display:inline-flex" (click)="$event.stopPropagation();logout()">Logout</button></h1> 
     
@@ -42,11 +41,5 @@
           </mat-expansion-panel>
         </ng-container>
       </mat-accordion>
-
-
-      
-      
-    </div>
   </div>
-  <mat-progress-spinner *ngIf="isRequest" class="example-margin" mode="indeterminate"></mat-progress-spinner>
 </div>
