@@ -1,0 +1,15 @@
+.whole-page {
+    height: 100vh;
+}
+
+.centered-card {
+    height: 100px;
+    width: 100px;
+}
+
+mat-card-actions {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding: 0 6px
+}

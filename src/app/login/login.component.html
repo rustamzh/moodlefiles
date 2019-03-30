@@ -1,0 +1,47 @@
+<div fxLayout fxLayoutAlign="center center" class="whole-page">
+  <mat-card fxFlex="30%" *ngIf="!isRequest">
+    <mat-card-title>Login</mat-card-title>
+    <form class="example-form" [formGroup]="loginForm">
+
+      <mat-card-content fxLayout="column" (keyup.enter)="onFill()">
+        <mat-form-field>
+          <input matInput placeholder="Moodle website" formControlName="main_site" required>
+        </mat-form-field>
+        <mat-error *ngIf="loginForm.controls.main_site.errors?.required && (loginForm.controls.main_site.dirty || loginForm.controls.main_site.touched)">
+          Moodle website is
+          <strong>required</strong>
+        </mat-error>
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="login" required>
+        </mat-form-field>
+        <mat-error *ngIf="loginForm.controls.login.errors?.required && (loginForm.controls.login.dirty || loginForm.controls.login.touched)">
+          Username is
+          <strong>required</strong>
+        </mat-error>
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password" formControlName="password" required>
+        </mat-form-field>
+        <mat-error *ngIf="loginForm.controls.password.errors?.required && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+          Password is
+          <strong>required</strong>
+        </mat-error>
+        <!-- <mat-form-field>
+            <input matInput placeholder="Invite" formControlName="invite" required>
+        </mat-form-field>
+        <mat-error *ngIf="loginForm.controls.invite.errors?.required && (loginForm.controls.invite.dirty || loginForm.controls.invite.touched)">
+            Currently invite is
+            <strong>required</strong>
+          </mat-error> -->
+      </mat-card-content>
+    </form>
+    <mat-error style="margin-bottom: 20px;" *ngIf="error">
+      Something is wrong: {{error.error}}
+    </mat-error>
+    <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="onFill()" [disabled]="loginForm.controls.main_site.errors?.required || loginForm.controls.password.errors?.required || loginForm.controls.login.errors?.required || loginForm.pristine">Login</button>
+        <button mat-raised-button color="accent" (click)="openDialog()" >Privacy concerns</button>
+      </mat-card-actions>
+  </mat-card>
+  <mat-progress-spinner *ngIf="isRequest" class="example-margin" mode="indeterminate">
+  </mat-progress-spinner>
+</div>
